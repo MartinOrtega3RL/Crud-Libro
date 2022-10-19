@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+//Importamos nuestros componentes
+
+import Create from "./Component/Crear";
+import Edit from "./Component/Editar";
+import Show from "./Container/Home";
+
+import { FirestoreProvider } from "./Context/FirebaseContext";
+
+//importar browser router
+
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <FirestoreProvider>
+      <Routes>
+        <Route path="/" element={<Show />} />
+        <Route path="/Crear" element={<Create />} />
+        <Route path="/Edit/:id" element={<Edit />} />
+      </Routes>
+    </FirestoreProvider>
   );
 }
 
